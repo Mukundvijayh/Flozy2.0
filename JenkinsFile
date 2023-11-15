@@ -1,0 +1,25 @@
+pipeline {
+  agent {label 'testnode'}
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
+  stages {
+    stage('Git Branch ') {
+      steps {
+        sh 'cd client && pwd && npm install --legacy-peer-deps'
+        sh 'cd client && CI= npm run build'
+
+      }
+    }
+    stage('get git tag') {
+            steps {
+             script {
+             latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+             env.BUILD_VERSION = latestTag
+             echo "env-BUILD_VERSION"
+             echo "${env.BUILD_VERSION}"
+            }
+        }
+    }
+  }
+}

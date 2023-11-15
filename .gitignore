@@ -1,0 +1,36 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# Common ignore Files
+.DS_Store
+.DS_Store?
+
+# IDEs and editors
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/*
+.idea/
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# client
+client/package-lock.json
+client/node_modules
+client/.eslintcache
+client/npm-debug.log*
+client/build
+
+# server
+server/**/__pycache__
+server/venv
+
+# env
+/**/*.env
+
+microservices/**/node_modules
+**/**/package-lock.json
